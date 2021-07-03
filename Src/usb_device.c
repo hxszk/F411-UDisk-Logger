@@ -94,6 +94,28 @@ void MX_USB_DEVICE_Init(void)
 /**
   * @}
   */
+void MX_USB_DEVICE_DeInit(void)
+{
+  /* USER CODE BEGIN USB_DEVICE_Init_PreTreatment */
+  
+  /* USER CODE END USB_DEVICE_Init_PreTreatment */
+  
+  /* Init Device Library, add supported class and start the library. */
+
+  if (USBD_Stop(&hUsbDeviceFS) != USBD_OK)
+  {
+    Error_Handler();
+  }
+
+  if (USBD_DeInit(&hUsbDeviceFS) != USBD_OK)
+  {
+    Error_Handler();
+  }
+
+  /* USER CODE BEGIN USB_DEVICE_Init_PostTreatment */
+  
+  /* USER CODE END USB_DEVICE_Init_PostTreatment */
+}
 
 /**
   * @}

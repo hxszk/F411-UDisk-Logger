@@ -47,6 +47,11 @@ Src/bsp_spi_flash.c\
 Src/system_stm32f4xx.c \
 Src/user_diskio.c \
 Src/fatfs.c \
+Src/morsel.c\
+Src/led.c\
+Src/uart.c\
+Src/blackbox_logging.c\
+libs/jsmn.c\
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c \
@@ -141,7 +146,8 @@ C_INCLUDES =  \
 -IMiddlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc \
 -IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
 -IDrivers/CMSIS/Include \
--IMiddlewares/Third_Party/FatFs/src
+-IMiddlewares/Third_Party/FatFs/src \
+-Ilibs
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections

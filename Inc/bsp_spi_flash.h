@@ -13,6 +13,6 @@ extern void MX_SPI_DMA_Init(void);
 
 extern uint32_t SPI_FLASH_ReadID(void);
 extern int32_t SPI_FLASH_ReadData(uint8_t *pu8RxBuffer, uint32_t u32addr, uint16_t lens);
-extern int32_t SPI_FLASH_WriteData(uint8_t* pu8Buf, uint32_t u32Addr, uint32_t u32Lens);
+extern int32_t SPI_FLASH_WriteData(const uint8_t* pu8Buf, uint32_t u32Addr, uint32_t u32Lens);
 
 #endif // ! __BSP_SPI_FLASH_H__ 

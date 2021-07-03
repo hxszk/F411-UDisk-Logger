@@ -1,6 +1,9 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
     "files.associations": {
-        "main.h": "c"
+        "main.h": "c",
+        "morsel.h": "c",
+        "stm32f4xx_hal.h": "c",
+        "stdbool.h": "c"
     }
 }

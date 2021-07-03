@@ -251,6 +251,7 @@ __ALIGN_BEGIN uint8_t USBD_StringSerial[USB_SIZ_STRING_SERIAL] __ALIGN_END = {
   * @{
   */
 
+extern uint8_t isUsbPlugIn;
 /**
   * @brief  Return the device descriptor
   * @param  speed : Current device speed
@@ -259,6 +260,9 @@ __ALIGN_BEGIN uint8_t USBD_StringSerial[USB_SIZ_STRING_SERIAL] __ALIGN_END = {
   */
 uint8_t * USBD_FS_DeviceDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
 {
+  //Alex add 20210703, check if usb plug in
+  isUsbPlugIn = 1;
+
   UNUSED(speed);
   *length = sizeof(USBD_FS_DeviceDesc);
   return USBD_FS_DeviceDesc;
@@ -345,6 +349,7 @@ uint8_t * USBD_FS_ConfigStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
   {
     USBD_GetString((uint8_t *)USBD_CONFIGURATION_STRING_FS, USBD_StrDesc, length);
   }
+
   return USBD_StrDesc;
 }
 

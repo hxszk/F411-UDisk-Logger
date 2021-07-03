@@ -23,6 +23,7 @@ char USERPath[4];   /* USER logical drive path */
 FATFS USERFatFS;    /* File system object for USER logical drive */
 FIL USERFile;       /* File object for USER */
 
+
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */    
@@ -33,7 +34,7 @@ void MX_FATFS_Init(void)
   retUSER = FATFS_LinkDriver(&USER_Driver, USERPath);
 
   /* USER CODE BEGIN Init */
-  /* additional user code for init */     
+  /* additional user code for init */  
   /* USER CODE END Init */
 }
 

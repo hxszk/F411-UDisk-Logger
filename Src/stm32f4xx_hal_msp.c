@@ -111,7 +111,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-    /*Configure NSS pin as OUTPUT as CS : PC13 */
+    /*Configure NSS pin as OUTPUT as CS : PA4 */
     GPIO_InitStruct.Pin = GPIO_PIN_4;
     GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -218,18 +218,22 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
   
     __HAL_RCC_GPIOA_CLK_ENABLE();
     /**USART1 GPIO Configuration    
-    PA10     ------> USART1_RX
-    PA15     ------> USART1_TX 
+    PA9     ------> USART1_TX
+    PA10     ------> USART1_RX 
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_15;
+    GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+    /* USART1 interrupt Init */
+    HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(USART1_IRQn);
   /* USER CODE BEGIN USART1_MspInit 1 */
 
+    __HAL_UART_ENABLE_IT(huart, UART_IT_RXNE);
   /* USER CODE END USART1_MspInit 1 */
   }
 

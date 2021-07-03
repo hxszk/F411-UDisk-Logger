@@ -36,6 +36,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include <string.h>
 #include "ff_gen_drv.h"
+#include "bsp_spi_flash.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -82,7 +83,14 @@ DSTATUS USER_initialize (
 )
 {
   /* USER CODE BEGIN INIT */
-    Stat = STA_NOINIT;
+    if (pdrv != 0)
+    {
+        return RES_PARERR;
+    }
+    
+    //MX_SPI1_Init(); 上电就会初始化，此处不做动作
+    Stat = RES_OK;
+    
     return Stat;
   /* USER CODE END INIT */
 }
@@ -97,7 +105,12 @@ DSTATUS USER_status (
 )
 {
   /* USER CODE BEGIN STATUS */
-    Stat = STA_NOINIT;
+    if (pdrv != 0)
+    {
+        return RES_PARERR;
+    }
+    
+    Stat = RES_OK;
     return Stat;
   /* USER CODE END STATUS */
 }
@@ -118,6 +131,16 @@ DRESULT USER_read (
 )
 {
   /* USER CODE BEGIN READ */
+
+    if (pdrv != 0)
+    {
+        return RES_PARERR;
+    }
+    
+    if (SPI_FLASH_ReadData(buff, sector * SPI_FLASH_SECTOR_SIZE, count * SPI_FLASH_SECTOR_SIZE))
+    {
+        return RES_ERROR;
+    }
     return RES_OK;
   /* USER CODE END READ */
 }
@@ -140,6 +163,15 @@ DRESULT USER_write (
 { 
   /* USER CODE BEGIN WRITE */
   /* USER CODE HERE */
+    if (pdrv != 0)
+    {
+        return RES_PARERR;
+    }
+    
+    if(SPI_FLASH_WriteData(buff, sector * SPI_FLASH_SECTOR_SIZE, count * SPI_FLASH_SECTOR_SIZE))
+    {
+        return RES_ERROR;
+    }
     return RES_OK;
   /* USER CODE END WRITE */
 }
@@ -161,6 +193,39 @@ DRESULT USER_ioctl (
 {
   /* USER CODE BEGIN IOCTL */
     DRESULT res = RES_ERROR;
+
+    if (pdrv != 0)
+    {
+        return RES_PARERR;
+    }
+
+    switch(cmd)
+    {
+    case CTRL_SYNC:
+        res = RES_OK;
+        break;
+
+    case GET_SECTOR_COUNT:
+        *(DWORD*)buff = SPI_FLASH_SECTOR_NUM;
+        res = RES_OK;
+        break;
+
+    case GET_SECTOR_SIZE:
+        *(DWORD*)buff = SPI_FLASH_SECTOR_SIZE;
+        res = RES_OK;
+        break;
+
+    case GET_BLOCK_SIZE:
+        *(DWORD*)buff = 1;
+        res = RES_OK;
+        break;
+
+    default:
+        res = RES_PARERR;
+        break;
+
+    }
+    
     return res;
   /* USER CODE END IOCTL */
 }

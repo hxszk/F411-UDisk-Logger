@@ -269,7 +269,7 @@ int32_t SPI_FLASH_SectorErase(uint32_t u32Addr, uint32_t u32Count)
   * @param  u16Lens，写入数据长度，必须小于等于SPI_FLASH_PerWritePageSize
   * @retval 0: 成功，other：失败代码
   */
-int32_t SPI_FLASH_PageWrite(uint8_t* pu8Buf, uint32_t u32Addr, uint16_t u16Lens)
+int32_t SPI_FLASH_PageWrite(const uint8_t* pu8Buf, uint32_t u32Addr, uint16_t u16Lens)
 {
     HAL_StatusTypeDef retval;
     uint8_t u8Data[4] = {
@@ -297,7 +297,7 @@ int32_t SPI_FLASH_PageWrite(uint8_t* pu8Buf, uint32_t u32Addr, uint16_t u16Lens)
         u16Lens = W25X_PageSize;
     }
 
-    retval = HAL_SPI_Transmit(&hspi1, pu8Buf, u16Lens, 500);
+    retval = HAL_SPI_Transmit(&hspi1, (uint8_t *)pu8Buf, u16Lens, 500);
     if (retval)
     {
         return retval;
@@ -317,7 +317,7 @@ int32_t SPI_FLASH_PageWrite(uint8_t* pu8Buf, uint32_t u32Addr, uint16_t u16Lens)
   * @param  u32Lens，写入数据长度
   * @retval 无
   */
-int32_t SPI_FLASH_WriteData(uint8_t* pu8Buf, uint32_t u32Addr, uint32_t u32Lens)
+int32_t SPI_FLASH_WriteData(const uint8_t* pu8Buf, uint32_t u32Addr, uint32_t u32Lens)
 {
     HAL_StatusTypeDef retval = HAL_OK;
 
