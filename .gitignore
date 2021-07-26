@@ -1,3 +1,4 @@
+build/*.*
 build/bsp_spi_flash.d
 build/bsp_spi_flash.lst
 build/bsp_spi_flash.o
