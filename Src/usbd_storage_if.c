@@ -231,7 +231,7 @@ int8_t STORAGE_IsWriteProtected_FS(uint8_t lun)
 int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 6 */
-  SPI_FLASH_ReadData(buf, blk_addr * SPI_FLASH_SECTOR_SIZE, blk_len * SPI_FLASH_SECTOR_SIZE);
+//  SPI_FLASH_ReadData(buf, blk_addr * SPI_FLASH_SECTOR_SIZE, blk_len * SPI_FLASH_SECTOR_SIZE);
   return (USBD_OK);
   /* USER CODE END 6 */
 }
@@ -244,7 +244,7 @@ int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t bl
 int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 7 */
-  SPI_FLASH_WriteData(buf, blk_addr * SPI_FLASH_SECTOR_SIZE, blk_len * SPI_FLASH_SECTOR_SIZE);
+//  SPI_FLASH_WriteData(buf, blk_addr * SPI_FLASH_SECTOR_SIZE, blk_len * SPI_FLASH_SECTOR_SIZE);
   return (USBD_OK);
   /* USER CODE END 7 */
 }

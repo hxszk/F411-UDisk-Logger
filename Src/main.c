@@ -22,7 +22,7 @@
 #include "main.h"
 #include "fatfs.h"
 #include "usb_device.h"
-#include "bsp_spi_flash.h"
+#include "bf_flash_w25q.h"
 #include "led.h"
 #include "blackbox_logging.h"
 #include <stdbool.h>
@@ -88,9 +88,8 @@ int main(void)
 
 	/* Initialize all configured peripherals */
 	led_init();
-	MX_SPI1_Init();
 	MX_USB_DEVICE_Init();
-	MX_SPI_DMA_Init();
+	// MX_SPI_DMA_Init();
 	MX_FATFS_Init();    
 
     if (!check_if_usb_plugin(100))

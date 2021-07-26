@@ -43,7 +43,6 @@ Src/usbd_desc.c \
 Src/usbd_storage_if.c \
 Src/stm32f4xx_it.c \
 Src/stm32f4xx_hal_msp.c \
-Src/bsp_spi_flash.c\
 Src/system_stm32f4xx.c \
 Src/user_diskio.c \
 Src/fatfs.c \
@@ -51,6 +50,9 @@ Src/morsel.c\
 Src/led.c\
 Src/uart.c\
 Src/blackbox_logging.c\
+Src/bf_flash_w25q.c\
+Src/bf_flash.c\
+Src/bf_flashfs.c\
 libs/jsmn.c\
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c \

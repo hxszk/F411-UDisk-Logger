@@ -4,6 +4,8 @@
         "main.h": "c",
         "morsel.h": "c",
         "stm32f4xx_hal.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "bf_flash_w25q.h": "c",
+        "bf_utils.h": "c"
     }
 }

@@ -137,10 +137,10 @@ DRESULT USER_read (
         return RES_PARERR;
     }
     
-    if (SPI_FLASH_ReadData(buff, sector * SPI_FLASH_SECTOR_SIZE, count * SPI_FLASH_SECTOR_SIZE))
-    {
-        return RES_ERROR;
-    }
+    // if (SPI_FLASH_ReadData(buff, sector * SPI_FLASH_SECTOR_SIZE, count * SPI_FLASH_SECTOR_SIZE))
+    // {
+    //     return RES_ERROR;
+    // }
     return RES_OK;
   /* USER CODE END READ */
 }
@@ -168,10 +168,10 @@ DRESULT USER_write (
         return RES_PARERR;
     }
     
-    if(SPI_FLASH_WriteData(buff, sector * SPI_FLASH_SECTOR_SIZE, count * SPI_FLASH_SECTOR_SIZE))
-    {
-        return RES_ERROR;
-    }
+    // if(SPI_FLASH_WriteData(buff, sector * SPI_FLASH_SECTOR_SIZE, count * SPI_FLASH_SECTOR_SIZE))
+    // {
+    //     return RES_ERROR;
+    // }
     return RES_OK;
   /* USER CODE END WRITE */
 }
